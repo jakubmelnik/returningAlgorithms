@@ -97,7 +97,13 @@ void initHamiltonAdjacent(const std::vector<std::vector<bool>>& adjMatrix)
 	path[0] = 0;
 	visited[0] = true;
 
-	std::cout << "Hamilton macierz sasiedztwa: " << (hamiltonRecursiveAdjacent(1, adjMatrix, path, visited) ? "Jest cykl" : "Nie ma cyklu") << std::endl;
+	if (hamiltonRecursiveAdjacent(1, adjMatrix, path, visited)) {
+		for (int i : path) std::cout << i << " ";
+		std::cout << "0 " << std::endl;
+	}
+	else {
+		std::cout << "Nie ma cyklu";
+	}
 }
 
 void initHamiltonSuccession(const std::vector<std::vector<int>>& succList)
@@ -108,7 +114,13 @@ void initHamiltonSuccession(const std::vector<std::vector<int>>& succList)
 	path[0] = 0;
 	visited[0] = true;
 
-	std::cout << "Hamilton lista skierowana: " << (hamiltonRecursiveSuccession(1, succList, path, visited) ? "Jest cykl" : "Nie ma cyklu") << std::endl;
+	if (hamiltonRecursiveSuccession(1, succList, path, visited)) {
+		for (int i : path) std::cout << i << " ";
+		std::cout << "0 " << std::endl;
+	}
+	else {
+		std::cout << "Nie ma cyklu";
+	}
 }
 
 void initEulerAdjacent(int E, std::vector<std::vector<bool>> adjMatrix)
@@ -116,7 +128,13 @@ void initEulerAdjacent(int E, std::vector<std::vector<bool>> adjMatrix)
 	std::vector<int> path(E + 1, -1);
 	path[0] = 0;
 
-	std::cout << "Euler macierz sasiedztwa: " << (eulerRecursiveAdjacent(1, E, adjMatrix, path) ? "Jest cykl" : "Nie ma cyklu") << std::endl;
+	if (eulerRecursiveAdjacent(1, E, adjMatrix, path)) {
+		for (int i : path) std::cout << i << " ";
+		std::cout << std::endl;
+	}
+	else {
+		std::cout << "Nie ma cyklu";
+	}
 }
 
 void initEulerSuccession(int E, std::vector<std::vector<int>> succList)
@@ -124,7 +142,13 @@ void initEulerSuccession(int E, std::vector<std::vector<int>> succList)
 	std::vector<int> path(E + 1, -1);
 	path[0] = 0;
 
-	std::cout << "Euler lista skierowana: " << (eulerRecursiveSuccession(1, E, succList, path) ? "Jest cykl" : "Nie ma cyklu") << std::endl;
+	if (eulerRecursiveSuccession(1, E, succList, path)) {
+		for (int i : path) std::cout << i << " ";
+		std::cout << std::endl;
+	}
+	else {
+		std::cout << "Nie ma cyklu";
+	}
 }
 
 int main()
